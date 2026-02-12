@@ -1,0 +1,17 @@
+{
+  "name": "icml-workshop-monorepo",
+  "private": true,
+  "scripts": {
+    "dev": "turbo run dev --filter=website",
+    "website": "turbo run dev --filter=website",
+    "build": "turbo run build",
+    "lint": "turbo run lint"
+  },
+  "devDependencies": {
+    "turbo": "^2.6.3"
+  },
+  "packageManager": "pnpm@10.19.0",
+  "engines": {
+    "node": ">=22"
+  }
+}

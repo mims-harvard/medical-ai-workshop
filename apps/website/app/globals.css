@@ -1,0 +1,182 @@
+@import "tailwindcss";
+@import "tw-animate-css";
+
+:root {
+  --background: #000000;
+  --foreground: #ffffff;
+
+  --brand-white: #f7f7f7;
+  --brand-neutral-50: #dbdbdb;
+  --brand-neutral-100: #a8a8a8;
+  --brand-neutral-200: #757575;
+  --brand-neutral-300: #595959;
+  --brand-neutral-400: #424242;
+  --brand-neutral-500: #262626;
+  --brand-neutral-600: #171717;
+  --brand-black: #000000;
+
+  --accent: #60a5fa;
+  --accent-muted: rgba(96, 165, 250, 0.15);
+}
+
+@theme inline {
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
+  --font-sans: var(--font-geist-sans);
+  --font-mono: var(--font-geist-mono);
+
+  /* Brand colors */
+  --color-brand-white: var(--brand-white);
+  --color-brand-neutral-50: var(--brand-neutral-50);
+  --color-brand-neutral-100: var(--brand-neutral-100);
+  --color-brand-neutral-200: var(--brand-neutral-200);
+  --color-brand-neutral-300: var(--brand-neutral-300);
+  --color-brand-neutral-400: var(--brand-neutral-400);
+  --color-brand-neutral-500: var(--brand-neutral-500);
+  --color-brand-neutral-600: var(--brand-neutral-600);
+  --color-brand-black: var(--brand-black);
+
+  --color-accent: var(--accent);
+  --color-accent-muted: var(--accent-muted);
+}
+
+body {
+  background: var(--background);
+  color: var(--foreground);
+  overscroll-behavior: none;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+[id] {
+  scroll-margin-top: 80px;
+}
+
+/* Text selection styling */
+::selection {
+  background-color: #ffffff;
+  color: #000000;
+}
+
+::-moz-selection {
+  background-color: #ffffff;
+  color: #000000;
+}
+
+*:focus {
+  outline: none;
+}
+
+*:focus-visible {
+  outline: 1px solid white;
+  outline-offset: 2px;
+}
+
+/* Remove Safari input shadow on mobile */
+input[type="text"],
+input[type="email"] {
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  appearance: none;
+}
+
+/* Display typography */
+.display {
+  letter-spacing: -0.05rem;
+  @apply text-[1.5rem] leading-6 sm:text-[2.5rem] sm:leading-[3rem];
+}
+
+.heading-2 {
+  @apply text-[1.5rem] leading-8 tracking-[-0.03rem] sm:text-[2rem] sm:leading-[2.25rem] sm:tracking-[-0.04rem];
+}
+
+.text-gradient {
+  background: var(
+    --80-100-80,
+    linear-gradient(
+      270deg,
+      rgba(247, 247, 247, 0.8) 0%,
+      #f7f7f7 50%,
+      rgba(247, 247, 247, 0.8) 100%
+    )
+  );
+  background-clip: text;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+
+  &.heading-2 {
+    padding-bottom: 0.12rem;
+    margin-bottom: -0.12rem;
+  }
+
+  &.display {
+    padding-bottom: 0.22rem;
+    margin-bottom: -0.22rem;
+  }
+}
+
+/* Prose styles for content sections */
+.prose a {
+  @apply underline transition-all decoration-white/40 underline-offset-2 decoration-[0.1em] hover:text-white font-sans;
+}
+
+.prose p {
+  @apply font-sans text-brand-neutral-50;
+  line-height: 180%;
+  margin-top: 1rem;
+  margin-bottom: 0.5rem;
+  font-size: 1rem;
+}
+
+.prose > p:first-child {
+  margin-top: 0;
+}
+
+.prose ul {
+  @apply mt-4;
+  list-style: none;
+  padding-left: 0;
+  color: #c6c6c6;
+}
+
+.prose ol {
+  @apply list-decimal pl-6 mt-4;
+}
+
+.prose li {
+  @apply my-3 relative text-brand-neutral-50;
+  padding-left: 1rem;
+}
+
+.prose ul li::before {
+  content: "\2219  ";
+  position: absolute;
+  left: 0;
+  font-weight: bold;
+}
+
+.prose strong {
+  font-weight: 600;
+  color: var(--brand-white);
+}
+
+.prose em {
+  font-style: italic;
+}
+
+.prose hr {
+  @apply border-white/20;
+}
+
+/* Section divider */
+.section-divider {
+  @apply border-t border-white/10;
+}
