@@ -80,14 +80,6 @@ h6,
   outline-offset: 2px;
 }
 
-/* Remove Safari input shadow on mobile */
-input[type="text"],
-input[type="email"] {
-  -webkit-appearance: none;
-  -moz-appearance: none;
-  appearance: none;
-}
-
 /* Display typography */
 .display {
   letter-spacing: -0.05rem;

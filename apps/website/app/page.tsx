@@ -8,7 +8,6 @@ import { Speakers } from "@/components/sections/speakers";
 import { Organizers } from "@/components/sections/organizers";
 import { GlobalHealthPanel } from "@/components/sections/global-health-panel";
 import { FAQs } from "@/components/sections/faqs";
-import { Signup } from "@/components/sections/signup";
 
 export const dynamic = "force-static";
 
@@ -43,9 +42,6 @@ export default function Home() {
 
       <div className="section-divider mx-auto max-w-6xl" />
       <FAQs />
-
-      <div className="section-divider mx-auto max-w-6xl" />
-      <Signup />
     </>
   );
 }

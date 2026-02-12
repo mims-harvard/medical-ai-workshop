@@ -26,7 +26,7 @@ const faqs = [
   {
     question: "Will there be virtual attendance options?",
     answer:
-      "Details on virtual attendance will be announced closer to the workshop date. Please check back or join our mailing list for updates." /* TODO: Update when virtual policy is confirmed */,
+      "Details on virtual attendance will be announced closer to the workshop date. Please check back for updates." /* TODO: Update when virtual policy is confirmed */,
   },
   {
     question: "Is this workshop only about medical AI?",
@@ -41,7 +41,7 @@ const faqs = [
   {
     question: "Are there travel grants available?",
     answer:
-      "Details on travel grants and financial assistance for attendees will be announced closer to the workshop. Please check back or join our mailing list for updates." /* TODO: Update when travel grant policy is confirmed */,
+      "Details on travel grants and financial assistance for attendees will be announced closer to the workshop. Please check back for updates." /* TODO: Update when travel grant policy is confirmed */,
   },
   {
     question: "Who should I contact with questions?",
