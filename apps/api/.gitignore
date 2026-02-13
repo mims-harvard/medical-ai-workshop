@@ -33,6 +33,6 @@ yarn-error.log*
 next-env.d.ts
 
 # synthea
-/scripts/synthea.jar
+scripts/synthea.jar
 /output/
 /synthea-output/
