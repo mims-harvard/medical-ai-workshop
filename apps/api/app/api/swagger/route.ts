@@ -1,11 +1,14 @@
-import { NextResponse } from "next/server";
+import { NextRequest, NextResponse } from "next/server";
 
 /**
  * GET /api/swagger
  *
  * Returns the OpenAPI 3.1 specification for the Virtual Clinic API.
  */
-export async function GET() {
+export async function GET(request: NextRequest) {
+  const host = request.headers.get("host") || "localhost:3001";
+  const proto = request.headers.get("x-forwarded-proto") || (host.startsWith("localhost") ? "http" : "https");
+
   const spec = {
     openapi: "3.1.0",
     info: {
@@ -22,7 +25,13 @@ export async function GET() {
         "## Task Types\n" +
         "- **diagnosis** — Interview the patient to propose a diagnosis\n" +
         "- **treatment** — Interview the patient to predict the treatment plan\n" +
-        "- **event** — Interview the patient to estimate probability of a clinical event",
+        "- **event** — Interview the patient to estimate probability of a clinical event\n\n" +
+        "## Authentication\n" +
+        "All data endpoints require a Bearer token in the `Authorization` header.\n" +
+        "- **User tokens** can access conversation endpoints\n" +
+        "- **Admin tokens** can additionally access patient data endpoints\n\n" +
+        "Tokens are distributed by workshop organizers. Include them as:\n" +
+        "```\nAuthorization: Bearer <your-token>\n```",
       contact: {
         name: "ASPIRE Workshop",
         url: "https://icml-workshop.vercel.app",
@@ -32,8 +41,8 @@ export async function GET() {
       {
         url: "{protocol}://{host}",
         variables: {
-          protocol: { default: "http", enum: ["http", "https"] },
-          host: { default: "localhost:3001" },
+          protocol: { default: proto, enum: ["http", "https"] },
+          host: { default: host },
         },
       },
     ],
@@ -74,8 +83,9 @@ export async function GET() {
           tags: ["Patients"],
           summary: "List patients",
           description:
-            "Returns a paginated list of synthetic patients with basic demographics.",
+            "Returns a paginated list of synthetic patients with basic demographics. **Requires admin token.**",
           operationId: "listPatients",
+          security: [{ BearerAuth: [] }],
           parameters: [
             {
               name: "page",
@@ -115,6 +125,22 @@ export async function GET() {
                 },
               },
             },
+            "401": {
+              description: "Unauthorized — missing or invalid Bearer token",
+              content: {
+                "application/json": {
+                  schema: { $ref: "#/components/schemas/Error" },
+                },
+              },
+            },
+            "403": {
+              description: "Forbidden — requires admin privileges",
+              content: {
+                "application/json": {
+                  schema: { $ref: "#/components/schemas/Error" },
+                },
+              },
+            },
           },
         },
       },
@@ -123,8 +149,9 @@ export async function GET() {
           tags: ["Patients"],
           summary: "Get patient details",
           description:
-            "Returns a single patient's full profile including summarized EHR data (conditions, medications, allergies, procedures, observations, etc.).",
+            "Returns a single patient's full profile including summarized EHR data (conditions, medications, allergies, procedures, observations, etc.). **Requires admin token.**",
           operationId: "getPatient",
+          security: [{ BearerAuth: [] }],
           parameters: [
             {
               name: "id",
@@ -208,6 +235,7 @@ export async function GET() {
           description:
             "Returns a paginated list of conversations. Supports optional filtering by patientId and taskType.",
           operationId: "listConversations",
+          security: [{ BearerAuth: [] }],
           parameters: [
             {
               name: "page",
@@ -272,6 +300,7 @@ export async function GET() {
           description:
             "Start a new multi-turn conversation with a simulated patient. Choose a task type to set the interaction mode.",
           operationId: "createConversation",
+          security: [{ BearerAuth: [] }],
           requestBody: {
             required: true,
             content: {
@@ -360,6 +389,7 @@ export async function GET() {
           description:
             "Retrieve a conversation with all its messages (full conversation history).",
           operationId: "getConversation",
+          security: [{ BearerAuth: [] }],
           parameters: [
             {
               name: "id",
@@ -403,6 +433,7 @@ export async function GET() {
           description:
             "Send a message to the simulated patient agent. The agent will respond based on the patient's EHR data and conversation history. Both the user message and agent response are persisted.",
           operationId: "sendMessage",
+          security: [{ BearerAuth: [] }],
           parameters: [
             {
               name: "id",
@@ -487,6 +518,15 @@ export async function GET() {
       },
     },
     components: {
+      securitySchemes: {
+        BearerAuth: {
+          type: "http",
+          scheme: "bearer",
+          bearerFormat: "JWT",
+          description:
+            "JWT token provided by workshop organizers. Include as: Authorization: Bearer <token>",
+        },
+      },
       schemas: {
         PatientSummary: {
           type: "object",

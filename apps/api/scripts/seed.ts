@@ -316,7 +316,7 @@ async function insertData(data: ParsedData) {
     throw new Error("DATABASE_URL environment variable is required.");
   }
 
-  const client = postgres(connectionString);
+  const client = postgres(connectionString, { max: 1, prepare: false });
   const db = drizzle(client, { schema });
 
   log("Pushing schema to database via drizzle-kit...");
