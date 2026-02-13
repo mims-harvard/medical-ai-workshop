@@ -8,6 +8,9 @@
     "build": {
       "outputs": [".next/**", "!.next/cache/**"]
     },
-    "lint": {}
+    "lint": {},
+    "seed": {
+      "cache": false
+    }
   }
 }

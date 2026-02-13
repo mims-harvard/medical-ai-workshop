@@ -178,4 +178,8 @@ dist
 
 ### Vercel ###
 
+# Synthea output
+synthea-output/
+output/
+
 # End of https://www.toptal.com/developers/gitignore/api/vercel,nextjs,node,turbo
