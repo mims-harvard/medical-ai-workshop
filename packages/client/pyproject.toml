@@ -1,0 +1,42 @@
+[project]
+name = "virtual-clinic"
+version = "0.1.0"
+description = "Python client for the ASPIRE Virtual Clinic REST API — multi-turn conversations with LLM-based simulated patient agents."
+readme = "README.md"
+license = "MIT"
+requires-python = ">=3.10"
+authors = [{ name = "ASPIRE Workshop" }]
+keywords = ["virtual-clinic", "clinical-nlp", "simulated-patients", "medical-ai", "icml"]
+classifiers = [
+    "Development Status :: 3 - Alpha",
+    "Intended Audience :: Science/Research",
+    "Topic :: Scientific/Engineering :: Artificial Intelligence",
+    "Topic :: Scientific/Engineering :: Medical Science Apps.",
+    "Typing :: Typed",
+    "Programming Language :: Python :: 3",
+    "Programming Language :: Python :: 3.10",
+    "Programming Language :: Python :: 3.11",
+    "Programming Language :: Python :: 3.12",
+    "Programming Language :: Python :: 3.13",
+]
+dependencies = [
+    "httpx>=0.27,<1",
+    "pydantic>=2.0,<3",
+]
+
+[project.urls]
+Homepage = "https://icml-workshop.vercel.app"
+Repository = "https://github.com/your-org/icml-workshop"
+Documentation = "https://icml-workshop.vercel.app/docs"
+
+[build-system]
+requires = ["hatchling"]
+build-backend = "hatchling.build"
+
+[tool.hatch.build.targets.wheel]
+packages = ["src/virtual_clinic"]
+
+[tool.pyright]
+include = ["src"]
+pythonVersion = "3.10"
+typeCheckingMode = "strict"

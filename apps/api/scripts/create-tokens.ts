@@ -13,7 +13,7 @@
  */
 
 import { SignJWT } from "jose";
-import { readFileSync, existsSync } from "fs";
+import { readFileSync, writeFileSync, existsSync } from "fs";
 import { join } from "path";
 
 // ─── Load .env if present ──────────────────────────────────────────────────────
@@ -102,45 +102,51 @@ async function main() {
 
   const { users, admins, expiry } = parseArgs();
   const secret = new TextEncoder().encode(jwtSecret);
+  const lines: string[] = [];
 
-  console.log("");
-  console.log("=== Virtual Clinic Workshop Tokens ===");
-  console.log(`Expiry: ${expiry}`);
-  console.log("");
+  lines.push("=== Virtual Clinic Workshop Tokens ===");
+  lines.push(`Generated: ${new Date().toISOString()}`);
+  lines.push(`Expiry: ${expiry}`);
+  lines.push("");
 
   // Generate admin tokens
   if (admins > 0) {
-    console.log(`--- Admin Tokens (${admins}) ---`);
-    console.log("These tokens can access ALL endpoints including patient data.");
-    console.log("");
+    lines.push(`--- Admin Tokens (${admins}) ---`);
+    lines.push("These tokens can access ALL endpoints including patient data.");
+    lines.push("");
     for (let i = 1; i <= admins; i++) {
       const id = `admin-${String(i).padStart(2, "0")}`;
       const token = await createToken(secret, id, "admin", expiry);
-      console.log(`  ${id}:`);
-      console.log(`    ${token}`);
-      console.log("");
+      lines.push(`  ${id}:`);
+      lines.push(`    ${token}`);
+      lines.push("");
     }
   }
 
   // Generate user tokens
   if (users > 0) {
-    console.log(`--- User Tokens (${users}) ---`);
-    console.log("These tokens can access conversation endpoints only.");
-    console.log("");
+    lines.push(`--- User Tokens (${users}) ---`);
+    lines.push("These tokens can access conversation endpoints only.");
+    lines.push("");
     for (let i = 1; i <= users; i++) {
       const id = `participant-${String(i).padStart(2, "0")}`;
       const token = await createToken(secret, id, "user", expiry);
-      console.log(`  ${id}:`);
-      console.log(`    ${token}`);
-      console.log("");
+      lines.push(`  ${id}:`);
+      lines.push(`    ${token}`);
+      lines.push("");
     }
   }
 
-  console.log("=== Usage ===");
-  console.log(
+  lines.push("=== Usage ===");
+  lines.push(
     '  curl -H "Authorization: Bearer <token>" https://virtual-clinic-api.vercel.app/api/conversations'
   );
-  console.log("");
+  lines.push("");
+
+  const content = lines.join("\n");
+  const outPath = join(__dirname, "..", "tokens.txt");
+  writeFileSync(outPath, content, "utf-8");
+  console.log(`Tokens written to ${outPath}`);
 }
 
 main().catch((error) => {
