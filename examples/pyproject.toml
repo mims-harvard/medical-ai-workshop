@@ -1,0 +1,9 @@
+[project]
+name = "virtual-clinic-examples"
+version = "0.0.0"
+description = "Example scripts for the Virtual Clinic Python client."
+requires-python = ">=3.10"
+dependencies = [
+    "virtual-clinic>=0.1.0",
+    "pydantic-settings>=2.0,<3",
+]
