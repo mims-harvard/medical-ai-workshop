@@ -1,6 +1,6 @@
 # virtual-clinic
 
-Python client for the **ASPIRE Virtual Clinic REST API** — multi-turn conversations with LLM-based simulated patient agents powered by Synthea-generated electronic health records.
+Python client for the **Virtual Clinic REST API** — multi-turn conversations with LLM-based simulated patient agents powered by Synthea-generated electronic health records.
 
 ## Installation
 

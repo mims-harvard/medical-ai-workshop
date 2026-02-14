@@ -1,4 +1,4 @@
-"""virtual-clinic — Python client for the ASPIRE Virtual Clinic REST API.
+"""virtual-clinic — Python client for the Virtual Clinic REST API.
 
 Quick start::
 

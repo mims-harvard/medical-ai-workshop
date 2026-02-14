@@ -15,7 +15,7 @@ export async function GET(request: NextRequest) {
       title: "Virtual Clinic API",
       version: "0.1.0",
       description:
-        "REST API for the ASPIRE Virtual Clinic — multi-turn conversations with LLM-based simulated patient agents powered by Synthea-generated electronic health records.\n\n" +
+        "REST API for the Virtual Clinic — multi-turn conversations with LLM-based simulated patient agents powered by Synthea-generated electronic health records.\n\n" +
         "## Workflow\n" +
         "1. **List patients** — Browse available synthetic patients via `GET /api/patients`\n" +
         "2. **Inspect a patient** — View full EHR details via `GET /api/patients/{id}`\n" +
@@ -33,7 +33,7 @@ export async function GET(request: NextRequest) {
         "Tokens are distributed by workshop organizers. Include them as:\n" +
         "```\nAuthorization: Bearer <your-token>\n```",
       contact: {
-        name: "ASPIRE Workshop",
+        name: "ICML Workshop",
         url: "https://icml-workshop.vercel.app",
       },
     },

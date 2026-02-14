@@ -1,11 +1,11 @@
 [project]
 name = "virtual-clinic"
 version = "0.1.0"
-description = "Python client for the ASPIRE Virtual Clinic REST API — multi-turn conversations with LLM-based simulated patient agents."
+description = "Python client for the Virtual Clinic REST API — multi-turn conversations with LLM-based simulated patient agents."
 readme = "README.md"
 license = "MIT"
 requires-python = ">=3.10"
-authors = [{ name = "ASPIRE Workshop" }]
+authors = [{ name = "ICML Workshop" }]
 keywords = ["virtual-clinic", "clinical-nlp", "simulated-patients", "medical-ai", "icml"]
 classifiers = [
     "Development Status :: 3 - Alpha",
