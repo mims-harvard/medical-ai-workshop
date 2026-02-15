@@ -1,9 +1,22 @@
 [project]
 name = "virtual-clinic-examples"
 version = "0.0.0"
-description = "Example scripts for the Virtual Clinic Python client."
+description = "Example CLI for the Virtual Clinic Python client."
 requires-python = ">=3.10"
 dependencies = [
-    "virtual-clinic>=0.1.0",
-    "pydantic-settings>=2.0,<3",
+  "virtual-clinic>=0.2.0",
+  "pydantic-settings>=2.0,<3",
+  "langchain-openai>=0.3,<1",
+  "typer>=0.15,<1",
+  "rich>=14,<15",
 ]
+
+[build-system]
+requires = ["hatchling"]
+build-backend = "hatchling.build"
+
+[tool.hatch.build.targets.wheel]
+packages = ["cli"]
+
+[project.scripts]
+cli = "cli:app"

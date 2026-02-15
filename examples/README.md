@@ -1,101 +1,79 @@
-# Examples
+# Virtual Clinic -- Example CLI
 
-Example scripts demonstrating how to use the [`virtual-clinic`](https://pypi.org/project/virtual-clinic/) Python client to conduct multi-turn conversations with LLM-based simulated patients.
+A LangChain-powered CLI that conducts autonomous clinical interviews with simulated patients via the [Virtual Clinic](https://pypi.org/project/virtual-clinic/) API.
+
+An Azure OpenAI LLM plays the **doctor** role with no prior access to the patient's medical records -- it must discover all clinical information through conversation alone.
 
 ## Prerequisites
 
 - Python 3.10+
 - [uv](https://docs.astral.sh/uv/) package manager
 - A JWT token provided by workshop organizers
+- An Azure OpenAI resource with a deployed model (e.g. `gpt-4o`)
 
 ## Setup
 
 ```bash
-# Copy the env template and fill in your token
-cp .env.example .env
-
-# Install dependencies
+cp .env.example .env   # fill in your token + Azure OpenAI credentials
 uv sync
 ```
 
-Edit `.env` and set your token:
-
-```env
-VIRTUAL_CLINIC_TOKEN=eyJhbGciOiJIUzI1NiIs...
-VIRTUAL_CLINIC_BASE_URL=https://virtual-clinic-api.vercel.app
-```
-
-## Run
+## Usage
 
 ```bash
-uv run multi_round_conversation.py
+# Run a diagnosis interview (defaults)
+uv run virtual-clinic interview
+
+# Specify task type
+uv run virtual-clinic interview --task-type treatment
+uv run virtual-clinic interview -t event
+
+# Target a specific patient
+uv run virtual-clinic interview --patient-id <uuid>
+
+# Override max turns
+uv run virtual-clinic interview --max-turns 5
+
+# Verbose logging
+uv run virtual-clinic interview -v       # info level
+uv run virtual-clinic interview -vv      # debug level
+
+# Show help
+uv run virtual-clinic --help
+uv run virtual-clinic interview --help
 ```
 
 ## Configuration
 
-All settings are managed via environment variables (prefix `VIRTUAL_CLINIC_`) or the `.env` file:
+Environment variables are set in the `.env` file. CLI flags override defaults.
 
-| Variable | Required | Default | Description |
-|----------|----------|---------|-------------|
-| `VIRTUAL_CLINIC_TOKEN` | Yes | -- | JWT bearer token |
-| `VIRTUAL_CLINIC_BASE_URL` | No | `https://virtual-clinic-api.vercel.app` | API base URL |
-| `VIRTUAL_CLINIC_PATIENT_ID` | No | First patient in list | UUID of the patient to interview |
-| `VIRTUAL_CLINIC_TASK_TYPE` | No | `diagnosis` | Task type: `diagnosis`, `treatment`, or `event` |
+| Variable | Required | Default |
+|----------|----------|---------|
+| `VIRTUAL_CLINIC_TOKEN` | Yes | -- |
+| `VIRTUAL_CLINIC_BASE_URL` | No | `https://virtual-clinic-api.vercel.app` |
+| `AZURE_OPENAI_ENDPOINT` | Yes | -- |
+| `AZURE_OPENAI_API_KEY` | Yes | -- |
+| `AZURE_OPENAI_DEPLOYMENT` | No | `gpt5` |
+| `AZURE_OPENAI_API_VERSION` | No | `2024-08-01-preview` |
 
-## Customizing the interview
+| CLI flag | Default |
+|----------|---------|
+| `--task-type` / `-t` | `diagnosis` |
+| `--patient-id` / `-p` | First patient |
+| `--max-turns` / `-n` | `10` |
 
-Edit the `QUESTIONS` list in `multi_round_conversation.py` to change the interview flow:
-
-```python
-QUESTIONS: list[str] = [
-    "Hello, I'm your doctor today. What brings you in?",
-    "Can you describe your symptoms in more detail?",
-    "How long have you been experiencing these symptoms?",
-    # Add your own questions here
-]
-```
-
-## Example output
+## Project structure
 
 ```
-Connecting to https://virtual-clinic-api.vercel.app ...
-
-API status:   ok
-Database:     connected
-DB latency:   12 ms
-
-========================================================================
-Patient:      John Doe
-Gender:       M
-Born:         1980-01-15
-------------------------------------------------------------------------
-Conditions:   5 total, 2 active
-  - Essential hypertension
-  - Diabetes mellitus type 2
-Medications:  3 total, 2 active
-  - Lisinopril 10 MG Oral Tablet
-  - Metformin 500 MG Oral Tablet
-Allergies:    1
-  - Peanut allergy
-========================================================================
-
-Starting 'diagnosis' conversation ...
-Conversation: a1b2c3d4-...
-
-========================================================================
-INTERVIEW
-========================================================================
-
-[you]     Hello, I'm your doctor today. What brings you in?
-
-[patient] Hi doctor, thanks for seeing me. I've been feeling really tired
-          lately and getting these headaches that won't go away...
-
-------------------------------------------------------------------------
-
-[you]     Can you describe your symptoms in more detail?
-
-[patient] Well, the tiredness has been going on for a few weeks now...
-
-...
+examples/
+├── cli/
+│   ├── __init__.py      # Typer app, logging setup
+│   ├── __main__.py      # python -m cli support
+│   ├── config.py        # Pydantic Settings (env vars + .env)
+│   ├── interview.py     # The interview command
+│   ├── prompts.py       # System prompt and constants
+│   └── utils.py         # Shared helpers (format_rich)
+├── .env.example
+├── pyproject.toml
+└── README.md
 ```
