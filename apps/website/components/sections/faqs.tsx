@@ -60,14 +60,14 @@ export function FAQs() {
           For any questions not covered here, please contact{" "}
           <a
             href="mailto:marinka@hms.harvard.edu"
-            className="text-white underline underline-offset-2 decoration-white/40 hover:decoration-white"
+            className="text-on-surface underline underline-offset-2 decoration-on-surface/40 hover:decoration-on-surface"
           >
             marinka@hms.harvard.edu
           </a>{" "}
           or{" "}
           <a
             href="mailto:ayush.noori@sjc.ox.ac.uk"
-            className="text-white underline underline-offset-2 decoration-white/40 hover:decoration-white"
+            className="text-on-surface underline underline-offset-2 decoration-on-surface/40 hover:decoration-on-surface"
           >
             ayush.noori@sjc.ox.ac.uk
           </a>

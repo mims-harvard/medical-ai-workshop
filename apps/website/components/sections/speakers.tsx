@@ -1,10 +1,10 @@
-import { User } from "lucide-react";
+import Image from "next/image";
 
 interface Person {
   name: string;
   affiliation: string;
   role: string;
-  /* TODO: Add image URLs when photos are provided */
+  image: string;
 }
 
 const speakers: Person[] = [
@@ -12,56 +12,59 @@ const speakers: Person[] = [
     name: "Karandeep Singh",
     affiliation: "UC San Diego Health",
     role: "Chief Health AI Officer and Associate Professor",
+    image: "/karandeep-singh.webp",
   },
   {
     name: "Bilal Mateen",
     affiliation: "PATH; University of Birmingham",
     role: "Chief AI Officer; Professor",
+    image: "/bilal-mateen.webp",
   },
   {
     name: "Robert Korom",
     affiliation: "Penda Health",
     role: "Chief Medical Officer",
+    image: "/robert-korom.webp",
   },
   {
     name: "Kim Branson",
     affiliation: "GlaxoSmithKline",
     role: "SVP and Global Head of AI and Machine Learning",
+    image: "/kim-branson.webp",
   },
   {
     name: "Maryam Mustafa",
     affiliation: "Lahore University of Management Sciences",
     role: "Professor; Founder, Awaaz-e-Sehat",
+    image: "/maryam-mustafa.webp",
   },
   {
     name: "Melissa Miles",
     affiliation: "Gates Foundation",
     role: "Senior Program Officer, AI and Innovations in Primary Health Care",
+    image: "/melissa-miles.webp",
   },
   {
     name: "Lorenzo Righetto",
     affiliation: "Nature Health",
     role: "Senior Editor",
+    image: "/lorenzo-righetto.webp",
   },
 ];
 
 function PersonCard({ person }: { person: Person }) {
-  // Generate initials for placeholder avatar
-  const initials = person.name
-    .split(" ")
-    .map((n) => n[0])
-    .join("")
-    .slice(0, 2);
-
   return (
     <div className="group flex flex-col items-center text-center">
-      {/* TODO: Replace placeholder with actual photo */}
-      <div className="relative w-28 h-28 sm:w-32 sm:h-32 rounded-full overflow-hidden mb-3 border border-white/10 group-hover:border-white/30 transition-colors bg-accent/5 flex items-center justify-center">
-        <span className="text-2xl font-semibold text-accent/60">
-          {initials}
-        </span>
+      <div className="relative w-28 h-28 sm:w-32 sm:h-32 rounded-full overflow-hidden mb-3 border border-border group-hover:border-border-hover transition-colors">
+        <Image
+          src={person.image}
+          alt={person.name}
+          fill
+          className="object-cover"
+          sizes="(max-width: 640px) 112px, 128px"
+        />
       </div>
-      <h4 className="text-sm font-medium text-white">{person.name}</h4>
+      <h4 className="text-sm font-medium text-on-surface">{person.name}</h4>
       <p className="text-xs text-brand-neutral-200 mt-0.5">
         {person.affiliation}
       </p>

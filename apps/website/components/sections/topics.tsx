@@ -53,12 +53,12 @@ export function Topics() {
           {topics.map((topic) => (
             <div
               key={topic.title}
-              className="rounded-lg border border-white/10 bg-white/[0.02] p-6 hover:border-white/20 transition-colors"
+              className="rounded-lg border border-border bg-surface-elevated p-6 hover:border-border-hover transition-colors"
             >
               <div className="w-9 h-9 rounded-md bg-accent/10 flex items-center justify-center mb-4">
                 <topic.icon className="w-4.5 h-4.5 text-accent" />
               </div>
-              <h3 className="text-sm font-semibold text-white mb-2">
+              <h3 className="text-sm font-semibold text-on-surface mb-2">
                 {topic.title}
               </h3>
               <p className="text-xs text-brand-neutral-200 leading-relaxed">

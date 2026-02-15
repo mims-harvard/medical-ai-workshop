@@ -33,7 +33,7 @@ export function Header() {
       className={cn(
         "fixed top-0 left-0 right-0 z-50 transition-all duration-300",
         scrolled
-          ? "bg-black/80 backdrop-blur-md border-b border-white/10"
+          ? "bg-surface/80 backdrop-blur-md border-b border-border"
           : "bg-transparent"
       )}
     >
@@ -42,7 +42,7 @@ export function Header() {
           {/* Logo */}
           <Link
             href="/"
-            className="text-sm font-semibold text-white tracking-tight"
+            className="text-sm font-semibold text-on-surface tracking-tight"
           >
             Medical AI Workshop
           </Link>
@@ -53,7 +53,7 @@ export function Header() {
               <Link
                 key={link.href}
                 href={link.href}
-                className="px-2.5 py-1.5 text-xs text-brand-neutral-100 hover:text-white transition-colors"
+                className="px-2.5 py-1.5 text-xs text-brand-neutral-100 hover:text-on-surface transition-colors"
               >
                 {link.label}
               </Link>
@@ -62,7 +62,7 @@ export function Header() {
 
           {/* Mobile menu button */}
           <button
-            className="lg:hidden text-white p-1"
+            className="lg:hidden text-on-surface p-1"
             onClick={() => setMobileOpen(!mobileOpen)}
             aria-label={mobileOpen ? "Close menu" : "Open menu"}
           >
@@ -73,14 +73,14 @@ export function Header() {
 
       {/* Mobile menu */}
       {mobileOpen && (
-        <div className="lg:hidden bg-black/95 backdrop-blur-md border-b border-white/10">
+        <div className="lg:hidden bg-surface/95 backdrop-blur-md border-b border-border">
           <nav className="flex flex-col px-4 py-4 gap-1">
             {navLinks.map((link) => (
               <Link
                 key={link.href}
                 href={link.href}
                 onClick={() => setMobileOpen(false)}
-                className="px-3 py-2 text-sm text-brand-neutral-100 hover:text-white transition-colors"
+                className="px-3 py-2 text-sm text-brand-neutral-100 hover:text-on-surface transition-colors"
               >
                 {link.label}
               </Link>

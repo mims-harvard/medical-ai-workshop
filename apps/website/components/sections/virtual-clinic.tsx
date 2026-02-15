@@ -68,11 +68,11 @@ export function VirtualClinic() {
             {workflows.map((workflow) => (
               <div
                 key={workflow.title}
-                className="rounded-md border border-white/10 bg-black/30 p-4"
+                className="rounded-md border border-border bg-surface-overlay p-4"
               >
                 <div className="flex items-center gap-2 mb-2">
                   <workflow.icon className="w-4 h-4 text-accent" />
-                  <h4 className="text-sm font-semibold text-white">
+                  <h4 className="text-sm font-semibold text-on-surface">
                     {workflow.title}
                   </h4>
                 </div>

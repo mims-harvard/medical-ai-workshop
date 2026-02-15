@@ -61,9 +61,9 @@ export function GlobalHealthPanel() {
             {panelists.map((panelist) => (
               <div
                 key={panelist.name}
-                className="rounded-md border border-white/10 bg-black/30 p-4"
+                className="rounded-md border border-border bg-surface-overlay p-4"
               >
-                <h4 className="text-sm font-semibold text-white mb-1">
+                <h4 className="text-sm font-semibold text-on-surface mb-1">
                   {panelist.name}
                 </h4>
                 <p className="text-xs text-brand-neutral-200">

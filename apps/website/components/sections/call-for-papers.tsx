@@ -17,13 +17,13 @@ export function CallForPapers() {
 
         {/* Two submission type cards */}
         <div className="grid grid-cols-1 md:grid-cols-2 gap-6 mt-8 mb-10 max-w-3xl mx-auto">
-          <div className="rounded-lg border border-white/10 bg-white/[0.02] p-6">
-            <h3 className="text-lg font-semibold text-white mb-1">
+          <div className="rounded-lg border border-border bg-surface-elevated p-6">
+            <h3 className="text-lg font-semibold text-on-surface mb-1">
               Original Research Papers
             </h3>
             <p className="text-xs text-brand-neutral-200 mb-3">
-              Up to <strong className="text-white">5 pages</strong> (excluding
-              references & appendix)
+              Up to <strong className="text-on-surface">5 pages</strong>{" "}
+              (excluding references & appendix)
             </p>
             <p className="text-xs text-brand-neutral-200">
               Novel contributions to post-deployment improvement, test-time
@@ -32,12 +32,12 @@ export function CallForPapers() {
             </p>
           </div>
 
-          <div className="rounded-lg border border-white/10 bg-white/[0.02] p-6">
-            <h3 className="text-lg font-semibold text-white mb-1">
+          <div className="rounded-lg border border-border bg-surface-elevated p-6">
+            <h3 className="text-lg font-semibold text-on-surface mb-1">
               Perspective Pieces
             </h3>
             <p className="text-xs text-brand-neutral-200 mb-3">
-              Up to <strong className="text-white">2 pages</strong>
+              Up to <strong className="text-on-surface">2 pages</strong>
             </p>
             <p className="text-xs text-brand-neutral-200">
               Forward-looking position papers that outline challenges, propose
@@ -64,8 +64,8 @@ export function CallForPapers() {
         </div>
 
         {/* Important Dates */}
-        <div className="mt-12 rounded-lg border border-white/10 bg-white/[0.02] p-6 max-w-3xl mx-auto">
-          <h3 className="text-lg font-semibold text-white mb-4">
+        <div className="mt-12 rounded-lg border border-border bg-surface-elevated p-6 max-w-3xl mx-auto">
+          <h3 className="text-lg font-semibold text-on-surface mb-4">
             Important Dates
           </h3>
           <div className="space-y-3">

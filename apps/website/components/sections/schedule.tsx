@@ -27,7 +27,7 @@ export function Schedule() {
 
         <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
           {/* Morning */}
-          <div className="rounded-lg border border-white/10 bg-white/[0.02] p-6">
+          <div className="rounded-lg border border-border bg-surface-elevated p-6">
             <h3 className="text-xs font-mono uppercase tracking-wider text-accent mb-4">
               Morning
             </h3>
@@ -35,7 +35,7 @@ export function Schedule() {
               {morningSchedule.map((item) => (
                 <div
                   key={item.time}
-                  className="flex gap-4 py-2.5 border-b border-white/5 last:border-0"
+                  className="flex gap-4 py-2.5 border-b border-border-subtle last:border-0"
                 >
                   <span className="text-xs font-mono text-brand-neutral-200 w-28 shrink-0">
                     {item.time}
@@ -49,7 +49,7 @@ export function Schedule() {
           </div>
 
           {/* Afternoon */}
-          <div className="rounded-lg border border-white/10 bg-white/[0.02] p-6">
+          <div className="rounded-lg border border-border bg-surface-elevated p-6">
             <h3 className="text-xs font-mono uppercase tracking-wider text-accent mb-4">
               Afternoon
             </h3>
@@ -57,7 +57,7 @@ export function Schedule() {
               {afternoonSchedule.map((item) => (
                 <div
                   key={item.time}
-                  className="flex gap-4 py-2.5 border-b border-white/5 last:border-0"
+                  className="flex gap-4 py-2.5 border-b border-border-subtle last:border-0"
                 >
                   <span className="text-xs font-mono text-brand-neutral-200 w-28 shrink-0">
                     {item.time}

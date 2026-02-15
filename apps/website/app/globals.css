@@ -1,6 +1,9 @@
 @import "tailwindcss";
 @import "tw-animate-css";
 
+/* ------------------------------------------------------------------ */
+/* Dark theme (default)                                               */
+/* ------------------------------------------------------------------ */
 :root {
   --background: #000000;
   --foreground: #ffffff;
@@ -17,6 +20,80 @@
 
   --accent: #60a5fa;
   --accent-muted: rgba(96, 165, 250, 0.15);
+
+  /* Semantic surface tokens */
+  --surface: #000000;
+  --surface-elevated: rgba(255, 255, 255, 0.02);
+  --surface-overlay: rgba(0, 0, 0, 0.3);
+  --on-surface: #ffffff;
+  --on-surface-muted: #a8a8a8;
+  --border: rgba(255, 255, 255, 0.1);
+  --border-hover: rgba(255, 255, 255, 0.2);
+  --border-subtle: rgba(255, 255, 255, 0.05);
+
+  /* Selection */
+  --selection-bg: #ffffff;
+  --selection-fg: #000000;
+
+  /* Text gradient */
+  --text-gradient-start: rgba(247, 247, 247, 0.8);
+  --text-gradient-mid: #f7f7f7;
+  --text-gradient-end: rgba(247, 247, 247, 0.8);
+
+  /* Focus ring */
+  --ring: white;
+
+  /* Prose */
+  --prose-body: var(--brand-neutral-50);
+  --prose-strong: var(--brand-white);
+  --prose-link-decoration: rgba(255, 255, 255, 0.4);
+  --prose-list: #c6c6c6;
+  --prose-hr: rgba(255, 255, 255, 0.2);
+}
+
+/* ------------------------------------------------------------------ */
+/* Light theme                                                        */
+/* ------------------------------------------------------------------ */
+:root.light {
+  --background: #ffffff;
+  --foreground: #111111;
+
+  --brand-white: #111111;
+  --brand-neutral-50: #1a1a1a;
+  --brand-neutral-100: #444444;
+  --brand-neutral-200: #666666;
+  --brand-neutral-300: #888888;
+  --brand-neutral-400: #bbbbbb;
+  --brand-neutral-500: #e5e5e5;
+  --brand-neutral-600: #f5f5f5;
+  --brand-black: #ffffff;
+
+  --accent: #2563eb;
+  --accent-muted: rgba(37, 99, 235, 0.1);
+
+  --surface: #ffffff;
+  --surface-elevated: rgba(0, 0, 0, 0.03);
+  --surface-overlay: rgba(0, 0, 0, 0.05);
+  --on-surface: #111111;
+  --on-surface-muted: #444444;
+  --border: rgba(0, 0, 0, 0.12);
+  --border-hover: rgba(0, 0, 0, 0.25);
+  --border-subtle: rgba(0, 0, 0, 0.06);
+
+  --selection-bg: #2563eb;
+  --selection-fg: #ffffff;
+
+  --text-gradient-start: rgba(17, 17, 17, 0.8);
+  --text-gradient-mid: #111111;
+  --text-gradient-end: rgba(17, 17, 17, 0.8);
+
+  --ring: #111111;
+
+  --prose-body: #333333;
+  --prose-strong: #111111;
+  --prose-link-decoration: rgba(0, 0, 0, 0.3);
+  --prose-list: #444444;
+  --prose-hr: rgba(0, 0, 0, 0.15);
 }
 
 @theme inline {
@@ -38,6 +115,16 @@
 
   --color-accent: var(--accent);
   --color-accent-muted: var(--accent-muted);
+
+  /* Semantic tokens */
+  --color-surface: var(--surface);
+  --color-surface-elevated: var(--surface-elevated);
+  --color-surface-overlay: var(--surface-overlay);
+  --color-on-surface: var(--on-surface);
+  --color-on-surface-muted: var(--on-surface-muted);
+  --color-border: var(--border);
+  --color-border-hover: var(--border-hover);
+  --color-border-subtle: var(--border-subtle);
 }
 
 body {
@@ -62,13 +149,13 @@ h6,
 
 /* Text selection styling */
 ::selection {
-  background-color: #ffffff;
-  color: #000000;
+  background-color: var(--selection-bg);
+  color: var(--selection-fg);
 }
 
 ::-moz-selection {
-  background-color: #ffffff;
-  color: #000000;
+  background-color: var(--selection-bg);
+  color: var(--selection-fg);
 }
 
 *:focus {
@@ -76,7 +163,7 @@ h6,
 }
 
 *:focus-visible {
-  outline: 1px solid white;
+  outline: 1px solid var(--ring);
   outline-offset: 2px;
 }
 
@@ -91,14 +178,11 @@ h6,
 }
 
 .text-gradient {
-  background: var(
-    --80-100-80,
-    linear-gradient(
-      270deg,
-      rgba(247, 247, 247, 0.8) 0%,
-      #f7f7f7 50%,
-      rgba(247, 247, 247, 0.8) 100%
-    )
+  background: linear-gradient(
+    270deg,
+    var(--text-gradient-start) 0%,
+    var(--text-gradient-mid) 50%,
+    var(--text-gradient-end) 100%
   );
   background-clip: text;
   -webkit-background-clip: text;
@@ -117,11 +201,17 @@ h6,
 
 /* Prose styles for content sections */
 .prose a {
-  @apply underline transition-all decoration-white/40 underline-offset-2 decoration-[0.1em] hover:text-white font-sans;
+  @apply underline transition-all underline-offset-2 decoration-[0.1em] font-sans;
+  text-decoration-color: var(--prose-link-decoration);
+}
+
+.prose a:hover {
+  color: var(--on-surface);
 }
 
 .prose p {
-  @apply font-sans text-brand-neutral-50;
+  @apply font-sans;
+  color: var(--prose-body);
   line-height: 180%;
   margin-top: 1rem;
   margin-bottom: 0.5rem;
@@ -136,7 +226,7 @@ h6,
   @apply mt-4;
   list-style: none;
   padding-left: 0;
-  color: #c6c6c6;
+  color: var(--prose-list);
 }
 
 .prose ol {
@@ -144,7 +234,8 @@ h6,
 }
 
 .prose li {
-  @apply my-3 relative text-brand-neutral-50;
+  @apply my-3 relative;
+  color: var(--prose-body);
   padding-left: 1rem;
 }
 
@@ -157,7 +248,7 @@ h6,
 
 .prose strong {
   font-weight: 600;
-  color: var(--brand-white);
+  color: var(--prose-strong);
 }
 
 .prose em {
@@ -165,10 +256,11 @@ h6,
 }
 
 .prose hr {
-  @apply border-white/20;
+  border-color: var(--prose-hr);
 }
 
 /* Section divider */
 .section-divider {
-  @apply border-t border-white/10;
+  border-color: var(--border);
+  @apply border-t;
 }

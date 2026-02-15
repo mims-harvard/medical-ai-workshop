@@ -35,13 +35,13 @@ export function Hero() {
               href="https://openreview.net"
               target="_blank"
               rel="noopener noreferrer"
-              className="inline-flex items-center justify-center h-10 px-6 rounded-md bg-white text-black text-sm font-medium hover:bg-white/90 transition-colors"
+              className="inline-flex items-center justify-center h-10 px-6 rounded-md bg-on-surface text-surface text-sm font-medium hover:bg-on-surface/90 transition-colors"
             >
               Submit on OpenReview
             </a>
             <a
               href="#about"
-              className="inline-flex items-center justify-center h-10 px-6 rounded-md border border-white/20 text-white text-sm font-medium hover:bg-white/10 transition-colors"
+              className="inline-flex items-center justify-center h-10 px-6 rounded-md border border-border-hover text-on-surface text-sm font-medium hover:bg-surface-elevated transition-colors"
             >
               Learn more
             </a>

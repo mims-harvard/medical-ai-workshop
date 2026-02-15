@@ -1,13 +1,14 @@
 import Link from "next/link";
+import { ThemeToggle } from "@/components/ui/theme-toggle";
 
 export function Footer() {
   return (
-    <footer className="border-t border-white/10 bg-black">
+    <footer className="border-t border-border bg-surface">
       <div className="mx-auto max-w-6xl px-4 sm:px-6 py-10">
         <div className="grid grid-cols-1 sm:grid-cols-3 gap-8">
           {/* Brand */}
           <div>
-            <p className="text-sm font-semibold text-white mb-2">
+            <p className="text-sm font-semibold text-on-surface mb-2">
               Medical AI Workshop
             </p>
             <p className="text-xs text-brand-neutral-200">
@@ -26,13 +27,13 @@ export function Footer() {
             <div className="flex flex-col gap-2">
               <Link
                 href="mailto:marinka@hms.harvard.edu"
-                className="text-xs text-brand-neutral-200 hover:text-white transition-colors"
+                className="text-xs text-brand-neutral-200 hover:text-on-surface transition-colors"
               >
                 marinka@hms.harvard.edu
               </Link>
               <Link
                 href="mailto:ayush.noori@sjc.ox.ac.uk"
-                className="text-xs text-brand-neutral-200 hover:text-white transition-colors"
+                className="text-xs text-brand-neutral-200 hover:text-on-surface transition-colors"
               >
                 ayush.noori@sjc.ox.ac.uk
               </Link>
@@ -50,7 +51,7 @@ export function Footer() {
                 href="https://openreview.net"
                 target="_blank"
                 rel="noopener noreferrer"
-                className="text-xs text-brand-neutral-200 hover:text-white transition-colors"
+                className="text-xs text-brand-neutral-200 hover:text-on-surface transition-colors"
               >
                 OpenReview
               </Link>
@@ -58,7 +59,7 @@ export function Footer() {
                 href="https://icml.cc"
                 target="_blank"
                 rel="noopener noreferrer"
-                className="text-xs text-brand-neutral-200 hover:text-white transition-colors"
+                className="text-xs text-brand-neutral-200 hover:text-on-surface transition-colors"
               >
                 ICML 2026
               </Link>
@@ -66,7 +67,7 @@ export function Footer() {
                 href="https://github.com/mims-harvard/virtual-clinic"
                 target="_blank"
                 rel="noopener noreferrer"
-                className="text-xs text-brand-neutral-200 hover:text-white transition-colors"
+                className="text-xs text-brand-neutral-200 hover:text-on-surface transition-colors"
               >
                 Virtual Clinic (GitHub)
               </Link>
@@ -74,11 +75,12 @@ export function Footer() {
           </div>
         </div>
 
-        <div className="mt-10 pt-6 border-t border-white/10">
-          <p className="text-xs text-brand-neutral-300 text-center">
+        <div className="mt-10 pt-6 border-t border-border flex items-center justify-between">
+          <p className="text-xs text-brand-neutral-300">
             Algorithmic Foundations for Medical AI in the Real World &mdash; ICML
             2026
           </p>
+          <ThemeToggle />
         </div>
       </div>
     </footer>
