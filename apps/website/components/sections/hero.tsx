@@ -15,7 +15,9 @@ export function Hero() {
 
           {/* Title */}
           <h1 className="display text-gradient max-w-4xl">
-            Algorithmic Foundations for Medical AI in the Real World
+            Algorithmic Foundations for
+            <br />
+            Medical AI in the Real World
           </h1>
 
           {/* Subtitle */}

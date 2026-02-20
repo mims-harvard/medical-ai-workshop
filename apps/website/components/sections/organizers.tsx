@@ -5,6 +5,7 @@ interface Organizer {
   affiliation: string;
   email: string;
   bio: string;
+  bioSuffix?: string;
   image: string;
 }
 
@@ -95,6 +96,12 @@ export function Organizers() {
               </div>
               <p className="text-xs text-brand-neutral-200 leading-relaxed px-5 pb-5">
                 {person.bio}
+                {person.bioSuffix && (
+                  <>
+                    {" "}
+                    <em>{person.bioSuffix}</em>
+                  </>
+                )}
               </p>
             </div>
           ))}
