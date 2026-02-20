@@ -189,13 +189,11 @@ h6,
   -webkit-text-fill-color: transparent;
 
   &.heading-2 {
-    padding-bottom: 0.12rem;
-    margin-bottom: -0.12rem;
+    padding-bottom: 0.06rem;
   }
 
   &.display {
-    padding-bottom: 0.22rem;
-    margin-bottom: -0.22rem;
+    padding-bottom: 0.06rem;
   }
 }
 
