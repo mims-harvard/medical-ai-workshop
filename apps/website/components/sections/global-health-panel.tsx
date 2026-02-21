@@ -3,19 +3,19 @@ import { Globe } from "lucide-react";
 const panelists = [
   {
     name: "Gates Foundation",
-    description: "AI and Innovations in Primary Health Care",
+    description: "Pioneering AI for primary healthcare in Africa",
   },
   {
     name: "University of Global Health Equity",
-    description: "Global health delivery and education",
+    description: "Global health education",
   },
   {
     name: "Partners In Health",
-    description: "Health system strengthening in low-resource settings",
+    description: "Quality healthcare in low-resource settings",
   },
   {
     name: "Nature Health",
-    description: "Scientific publishing and health research",
+    description: "Research impacting health policy and practice",
   },
   /* TODO: Add additional panelists and their details when confirmed */
 ];
@@ -38,21 +38,25 @@ export function GlobalHealthPanel() {
 
           <div className="prose max-w-none mb-8">
             <p>
-              Health is a global challenge. Opportunities and challenges for
-              medical AI differ across environments, making it critical to ensure
-              that diverse perspectives are included. Our workshop reflects this
-              commitment through a diverse organizing committee and speaker list
-              that draws from six continents.
+              There are unique opportunities and challenges for real-world
+              medical AI in low- and middle-income countries (LMICs). For
+              example, LMIC health AI deployments often encounter extreme
+              distribution shift; must operate with intermittent connectivity and
+              limited compute, necessitating distillation, quantization, or
+              low-bitwidth inference; and often rely on sparse or noisy human
+              feedback when clinical expertise is limited. Recognizing these
+              differences, our workshop is committed to a global perspective.
+              This commitment is reflected through a diverse organizing committee
+              and speaker list that draws from five continents.
             </p>
             <p>
               This panel will feature leaders in global health delivery and AI
-              deployment who will outline specific priority applications of
-              AI&mdash;such as autonomous triage, predicting maternal health
-              risk, and AI-assisted documentation. We will specifically invite
-              frontline implementation partners from low- and middle-income
-              countries to join our workshop, ensuring that technical discussions
-              are grounded in the infrastructure and resource realities of the
-              Global South.
+              deployment who will outline specific priority global health
+              application areas for AI, such as autonomous triage, maternal
+              health risk prediction, and AI-assisted clinical documentation. We
+              will actively invite frontline implementation partners from LMICs
+              to participate, ensuring that technical discussions remain grounded
+              in realities of the Global South.
             </p>
           </div>
 
